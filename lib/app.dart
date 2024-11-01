@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:toastification/toastification.dart';
 import 'package:weather_watch/bindings/initial_bindings.dart';
 import 'package:weather_watch/utils/constants/text_strings.dart';
 import 'package:weather_watch/utils/routes/routers.dart';
@@ -10,14 +11,16 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: AppTexts.appName,
-      themeMode: ThemeMode.light,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      debugShowCheckedModeBanner: false,
-      initialBinding: InitialBindings(),
-      getPages: routes,
+    return ToastificationWrapper(
+      child: GetMaterialApp(
+        title: AppTexts.appName,
+        themeMode: ThemeMode.light,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        debugShowCheckedModeBanner: false,
+        initialBinding: InitialBindings(),
+        getPages: routes,
+      ),
     );
   }
 }

@@ -12,7 +12,9 @@ class DeviceUtils {
 
   static Future<void> setStatusBarColor(Color color) async {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: color),
+      SystemUiOverlayStyle(
+        statusBarColor: color,
+      ),
     );
   }
 

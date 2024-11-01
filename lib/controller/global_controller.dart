@@ -20,7 +20,7 @@ class GlobalController extends GetxController{
     // TODO: implement onInit
     if(isLoadingCurrentLocation.isTrue){
       await _determinePosition();
-      weatherRepository.getCurrentWeather(lat: latitude.value, long: longitude.value);
+      await weatherRepository.getCurrentWeather(lat: latitude.value, long: longitude.value);
       isLoadingCurrentLocation(false);
     }
     super.onInit();
@@ -55,6 +55,7 @@ class GlobalController extends GetxController{
       longitude.value = value.longitude;
 
       List<Placemark> address = await placemarkFromCoordinates(value.latitude, value.longitude);
+
       locality.value = address[0].locality ?? "N/A";
       subLocality.value = address[0].subLocality ?? "N/A";
     });

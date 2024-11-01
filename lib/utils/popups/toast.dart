@@ -5,14 +5,14 @@ import '../constants/app_colors.dart';
 class CustomToast {
   static void showToast({required String message, bool success = false}) {
     toastification.show(
-      title: Text(success ? "Success" : "Error", style: TextStyle(color: success ? AppColors.white : AppColors.black),),
+      title: Text(success ? "Success" : "Error", style: TextStyle(color: success ? AppColors.dark : AppColors.white),),
       description: Text(message),
-      foregroundColor: success ? AppColors.white : AppColors.black,
+      foregroundColor: success ? AppColors.dark : AppColors.white,
       alignment: Alignment.bottomCenter,
       showProgressBar: false,
       style: ToastificationStyle.fillColored,
       type: success ? ToastificationType.success : ToastificationType.error,
-      primaryColor: success ? AppColors.primary : AppColors.white,
+      primaryColor: success ? AppColors.primary : AppColors.secondary,
       autoCloseDuration: const Duration(seconds: 5),
     );
   }

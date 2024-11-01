@@ -12,7 +12,7 @@ class CurrentWeather extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx((){
+    return Obx(() {
       double temperature =
           weatherRepo.temperature.value.current?.temperature2m ?? 0.0;
 
@@ -26,24 +26,20 @@ class CurrentWeather extends StatelessWidget {
           ),
           20.horizontalSpace,
           // -- Weather Temperature
-          Obx(
-                () => weatherRepo.isWeatherLoading.isTrue
-                ? const CircularProgressIndicator()
-                : Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TemperatureText(
-                  temperature: temperature,
-                ),
-                // Weather Condition
-                Text(
-                  "-- ${HomeHelpers.getWeatherType(temperature)}",
-                  // Display dynamic condition
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-              ],
-            ),
-          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TemperatureText(
+                temperature: temperature,
+              ),
+              // Weather Condition
+              Text(
+                "-- ${HomeHelpers.getWeatherType(temperature)}",
+                // Display dynamic condition
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+            ],
+          )
         ],
       );
     });
