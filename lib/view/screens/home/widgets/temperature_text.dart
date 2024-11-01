@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class TemperatureWidget extends StatelessWidget {
-  final int temperature;
+class TemperatureText extends StatelessWidget {
+  final num temperature;
   final String unit;
   final double fontSize;
 
-  const TemperatureWidget({
+  const TemperatureText({
     super.key,
     required this.temperature,
-    this.unit = '° C', this.fontSize = 90, // Default to Celsius
+    this.unit = '° C', this.fontSize = 80, // Default to Celsius
   });
 
   @override

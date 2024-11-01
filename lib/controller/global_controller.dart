@@ -1,9 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:weather_watch/view_model/repositories/weather_repositories.dart';
 
 class GlobalController extends GetxController{
   static GlobalController get instance => Get.find();
+
+  final weatherRepository = WeatherRepository.instance;
 
   final isLoadingCurrentLocation = true.obs;
   final latitude = 0.0.obs;
@@ -16,6 +20,7 @@ class GlobalController extends GetxController{
     // TODO: implement onInit
     if(isLoadingCurrentLocation.isTrue){
       await _determinePosition();
+      weatherRepository.getCurrentWeather(lat: latitude.value, long: longitude.value);
       isLoadingCurrentLocation(false);
     }
     super.onInit();
@@ -47,7 +52,7 @@ class GlobalController extends GetxController{
 
     await Geolocator.getCurrentPosition().then((value) async{
       latitude.value = value.latitude;
-      latitude.value = value.longitude;
+      longitude.value = value.longitude;
 
       List<Placemark> address = await placemarkFromCoordinates(value.latitude, value.longitude);
       locality.value = address[0].locality ?? "N/A";

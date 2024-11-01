@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:weather_watch/controller/global_controller.dart';
 import 'package:weather_watch/utils/constants/app_colors.dart';
 import 'package:weather_watch/utils/constants/extensions.dart';
-import 'package:weather_watch/utils/constants/sizes.dart';
 import 'package:weather_watch/utils/formatters/formatter.dart';
 
 class LocationAndDate extends StatelessWidget {
@@ -13,7 +12,7 @@ class LocationAndDate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: AppSizes.screenAllPadding,
+      padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

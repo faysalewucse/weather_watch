@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
         child: Obx(
           () => globalController.isLoadingCurrentLocation.isTrue
               ? const Center(child: CircularProgressIndicator())
-              : const HomeView(),
+              : HomeView(),
         ),
       ),
     );

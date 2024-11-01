@@ -1,40 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:weather_watch/view/screens/home/widgets/location_and_date.dart';
-import 'package:weather_watch/view/screens/home/widgets/temperature_widget.dart';
+import 'package:get/get.dart';
+import 'package:weather_watch/view/screens/home/home_helpers.dart';
+import 'package:weather_watch/view/screens/home/widgets/temperature_text.dart';
 import 'package:weather_watch/utils/constants/extensions.dart';
 import 'package:weather_watch/utils/constants/image_strings.dart';
+import 'package:weather_watch/view_model/repositories/weather_repositories.dart';
 
 class CurrentWeather extends StatelessWidget {
-  const CurrentWeather({super.key});
+  CurrentWeather({super.key});
+
+  final weatherRepo = WeatherRepository.instance;
 
   @override
   Widget build(BuildContext context) {
+    double temperature =
+        weatherRepo.temperature.value.current?.temperature2m ?? 0.0;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         // -- Weather Image
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              AppImages.rainyWithCloudy,
-              scale: 2.5,
-            ),
-          ],
+        HomeHelpers.getWeatherIcon(
+          temperature,
         ),
         20.horizontalSpace,
         // -- Weather Temperature
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TemperatureWidget(temperature: 19,),
-            // Weather Condition
-            Text(
-              "-- Rainy", // Display dynamic condition
-              style:Theme.of(context).textTheme.titleLarge,
-            ),
-          ],
+        Obx(
+          () => weatherRepo.isWeatherLoading.isTrue
+              ? const CircularProgressIndicator()
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TemperatureText(
+                      temperature: temperature,
+                    ),
+                    // Weather Condition
+                    Text(
+                      "-- ${HomeHelpers.getWeatherType(temperature)}",
+                      // Display dynamic condition
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                  ],
+                ),
         ),
       ],
     );
