@@ -20,8 +20,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("=> ${weatherRepo.temperature.value.hourly.temperature2m.length}");
-
     return Container(
       decoration: const BoxDecoration(
         gradient: AppColors.primaryLinear,
