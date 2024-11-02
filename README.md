@@ -2,6 +2,9 @@
 
 Weather Watch is a dynamic weather tracking app built with Flutter, utilizing the MVVM architecture and state management with GetX. This app provides real-time weather data, including current, hourly, and daily temperature updates, along with additional weather metrics such as humidity, wind speed, and rainfall.
 
+## Mock Up
+![Home Screen](assets/images/app_mock.png)
+
 ## Features
 
 - **Current Weather**: Real-time temperature and condition updates.
@@ -63,10 +66,6 @@ The project follows the MVVM architecture with the following structure:
 
 1. Update `weather_repository.dart` with your weather API URL and API key.
 2. Ensure proper formatting for JSON responses to match data models.
-
-## Mock Up
-![Home Screen](assets/images/app_mock.png)
-
 
 ## Contributing
 
